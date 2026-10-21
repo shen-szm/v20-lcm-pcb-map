@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1b25">
+  <meta name="description" content="V2.0_LCM PCB 元件位置图：5 个位号、封装、坐标和立创料号。">
+  <title>V2.0_LCM · 元件定位图</title>
+  <style>
+    :root{font-family:Inter,"Microsoft YaHei","PingFang SC",system-ui,sans-serif;color:#dce7e7;background:#0b1b25;font-synthesis:none}
+    *{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer}a{color:inherit}
+    .shell{width:min(1470px,100%);margin:auto;padding:30px clamp(16px,3vw,42px) 28px}
+    header{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:22px}
+    .eyebrow{font:700 11px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.2em;color:#69c9bd;text-transform:uppercase}
+    h1{margin:8px 0 8px;font-size:clamp(30px,3.6vw,48px);letter-spacing:-.055em;line-height:1.04;font-weight:740;color:#f4f7f4}
+    .subtitle{margin:0;color:#9bb0b6;font-size:14px;line-height:1.6}
+    .specs{display:flex;gap:24px;flex-wrap:wrap;justify-content:flex-end;color:#a7bcc0;font-size:12px}
+    .specs strong{display:block;color:#eff5ef;font:650 24px/1.1 ui-monospace,Consolas,monospace;margin-bottom:5px}
+    main{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}
+    .panel{border:1px solid #2c454b;background:#102933;border-radius:15px;overflow:hidden;box-shadow:0 22px 60px #00000025}
+    .toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 17px;border-bottom:1px solid #2c454b}
+    .toolbar-title{font-size:13px;font-weight:700;color:#e8f1ec}.toolbar-note{font-size:11px;color:#8aa9ac;margin-top:3px}
+    .zoom{display:flex;align-items:center;gap:5px}.zoom button{border:1px solid #39575d;color:#dce9e6;background:#17343d;border-radius:7px;width:31px;height:31px;font-size:19px;line-height:1}
+    .zoom button:hover,.zoom button:focus-visible{background:#254b54;border-color:#5f9896}.zoom output{min-width:43px;text-align:center;font-size:12px;color:#adbfbd;font-variant-numeric:tabular-nums}
+    .viewport{overflow:auto;padding:24px;background:radial-gradient(ellipse at 50% 40%,#17333e 0,#0a1923 70%)}
+    .stage{width:100%;aspect-ratio:1575.7821 / 1300.1915;position:relative;margin:auto;max-width:none;min-width:0;filter:drop-shadow(0 15px 20px #0009)}
+    .stage img,.stage svg{display:block;position:absolute;inset:0;width:100%;height:100%}
+    .stage svg{overflow:visible}.marker{cursor:pointer}.marker circle.target{fill:#ffcf73;stroke:#14202b;stroke-width:6;transition:r .15s ease,fill .15s ease}.marker:hover circle.target,.marker:focus-visible circle.target{fill:#fff3b8;r:22}.marker.faded{opacity:.24}.marker.selected circle.target{fill:#ffe9a4;r:22;stroke:#f88458}
+    .marker text{fill:#fff1c8;paint-order:stroke;stroke:#0a2631;stroke-width:9;font-size:42px;font-weight:800;letter-spacing:1px;pointer-events:none}
+    .marker:focus-visible{outline:none}.marker:focus-visible circle.hit{stroke:#fff;stroke-width:3}.hit{fill:transparent;stroke:transparent;stroke-width:0}
+    .board-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid #2c454b;padding:11px 17px;font-size:11px;color:#8ca8ab}
+    .legend{display:flex;align-items:center;gap:7px}.legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#ffcf73;box-shadow:0 0 0 2px #f88458}
+    .search{padding:16px;border-bottom:1px solid #2c454b}.search label{display:block;color:#a8c1c1;font-size:11px;font-weight:700;letter-spacing:.04em;margin-bottom:8px}
+    .search input{width:100%;background:#0b202a;border:1px solid #345158;color:#edf3ed;border-radius:8px;padding:11px 12px;outline:none;font-size:13px}
+    .search input::placeholder{color:#728f96}.search input:focus{border-color:#77d0c3;box-shadow:0 0 0 3px #77d0c323}
+    .part-list{padding:8px;display:grid;gap:3px;max-height:335px;overflow:auto}.part{display:flex;align-items:center;width:100%;padding:10px 11px;background:transparent;border:1px solid transparent;border-radius:8px;color:#e1eeee;text-align:left;gap:10px}
+    .part:hover,.part:focus-visible{background:#1a3b43}.part.active{background:#1d4148;border-color:#4c7978}.part .ref{width:57px;flex:none;font:700 14px ui-monospace,Consolas,monospace;color:#ffdf96}.part .value{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:12px}.part .arrow{margin-left:auto;color:#7dada8}
+    .empty{padding:18px 12px;color:#9fb4b4;font-size:12px}.section-cap{padding:12px 16px 0;color:#7e9ca0;font:700 10px ui-monospace,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase}
+    .detail{border-top:1px solid #2c454b;padding:17px 16px 19px;background:#112c35}.detail-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}.detail-ref{font:750 30px ui-monospace,Consolas,monospace;color:#fff1c8;letter-spacing:-.05em}.side{color:#79c5b5;font-size:11px;font-weight:700}
+    .detail-value{color:#e6efeb;font-size:15px;font-weight:680;margin:7px 0 3px}.detail-desc{color:#9cb4b6;font-size:12px;line-height:1.5;margin:0 0 15px}
+    dl{display:grid;grid-template-columns:71px 1fr;gap:8px;margin:0;font-size:12px;line-height:1.35}dt{color:#809da1}dd{margin:0;color:#dbe9e6;overflow-wrap:anywhere}
+    .coordinate{font:600 12px ui-monospace,Consolas,monospace;color:#a0e1d4}.note{margin:13px 0 0;color:#85a6a6;font-size:11px;line-height:1.5}
+    .part-link{color:#ffdf96;text-decoration:underline;text-underline-offset:3px;font-weight:700}.source-label{display:block;color:#88aaa9;font-size:11px;margin-top:3px}
+    footer{margin-top:15px;color:#80999c;font-size:11px;line-height:1.6}
+    @media(max-width:980px){main{grid-template-columns:1fr}.panel.sidebar{display:grid;grid-template-columns:1fr 1fr;align-items:start}.search{grid-column:1;border-right:1px solid #2c454b}.section-cap,.part-list{grid-column:1}.detail{grid-column:2;grid-row:1 / span 3;min-height:100%;border-top:0}}
+    @media(max-width:630px){header{align-items:start;flex-direction:column}.specs{justify-content:flex-start;gap:22px}.panel.sidebar{display:block}.search{border-right:0}.detail{border-top:1px solid #2c454b}.viewport{padding:14px;max-height:55vh}.marker text{font-size:50px}.board-foot{align-items:start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div><div class="eyebrow">PCB / component locator</div><h1>V2.0_LCM 元件定位</h1><p class="subtitle">按位号或料号搜索，点击板图标记，查看位置、封装和选型。板图为正面顶视方向。</p></div>
+      <div class="specs" aria-label="板子统计"><div><strong>05</strong>元件位号</div><div><strong>40 × 33</strong>板子尺寸约 mm</div><div><strong>05 / 00</strong>正面 / 背面</div></div>
+    </header>
+    <main>
+      <section class="panel" aria-label="LCM 板元件位置图">
+        <div class="toolbar"><div><div class="toolbar-title">PCB 正面 · 顶视图</div><div class="toolbar-note">铜线、焊盘和丝印依据 PCB 工程绘制</div></div><div class="zoom"><button id="zoom-out" type="button" aria-label="缩小">−</button><output id="zoom-percent">100%</output><button id="zoom-in" type="button" aria-label="放大">+</button></div></div>
+        <div class="viewport" id="viewport"><div class="stage" id="stage"><img src="./board.svg" width="1576" height="1300" alt="V2.0_LCM PCB 正面图，左侧为 LCD 接口，右侧为 FPC 排线座"><svg id="overlay" viewBox="0 0 1575.7821 1300.1915" aria-label="元件位置标记"><g id="markers"></g></svg></div></div>
+        <div class="board-foot"><span class="legend"><i class="legend-dot"></i>点击黄色位号可定位元件</span><span>坐标以板子左上边缘为原点，指向封装中心</span></div>
+      </section>
+      <aside class="panel sidebar" aria-label="元件列表和详情">
+        <div class="search"><label for="search-input">查找位号 / 型号 / 封装 / 料号</label><input id="search-input" type="search" placeholder="例如 FPC1、R32、C668617" autocomplete="off"></div>
+        <div class="section-cap" id="list-caption">5 components</div><div class="part-list" id="part-list"></div>
+        <section class="detail" aria-live="polite"><div class="detail-top"><div class="detail-ref" id="detail-ref">LCD</div><div class="side" id="detail-side">正面 · 顶层</div></div><div class="detail-value" id="detail-value"></div><p class="detail-desc" id="detail-desc"></p><dl><dt>位置</dt><dd class="coordinate" id="detail-coordinate"></dd><dt>PCB 封装</dt><dd id="detail-footprint"></dd><dt>型号</dt><dd id="detail-model"></dd><dt>立创料号</dt><dd><a class="part-link" id="detail-supplier" target="_blank" rel="noopener noreferrer"></a><span class="source-label" id="detail-source"></span></dd></dl><p class="note" id="detail-note"></p></section>
+      </aside>
+    </main>
+    <footer>坐标依据 PCB_V2.0_LCM.epcb2，数值与原理图核对。LCD、FPC1 的料号来自工程；C12、R1、R32 是依据 PCB 0402 焊盘提供的兼容推荐，工程未指定原厂料号。原理图通用器件名含 0603，但 PCB 实际封装为 0402，下单以 PCB 封装为准。</footer>
+  </div>
+  <script>
+  (async()=>{
+    const parts=await fetch('./parts.json').then(r=>{if(!r.ok)throw Error('元件数据加载失败');return r.json()});
+    const $=id=>document.getElementById(id), ns='http://www.w3.org/2000/svg';
+    const list=$('part-list'), markers=$('markers'), viewport=$('viewport'), stage=$('stage');
+    const byRef=new Map(parts.map(p=>[p.ref,p])), markerEls=new Map();
+    let selected=byRef.has(new URLSearchParams(location.search).get('part'))?new URLSearchParams(location.search).get('part'):'LCD';
+    let zoom=1;
+    for(const p of parts){
+      const g=document.createElementNS(ns,'g');g.setAttribute('class','marker');g.setAttribute('role','button');g.setAttribute('tabindex','0');g.setAttribute('aria-label',`${p.ref}，${p.description}，位置距左 ${p.xMm} 毫米，距上 ${p.yMm} 毫米`);
+      const hit=document.createElementNS(ns,'circle');hit.setAttribute('class','hit');hit.setAttribute('cx',p.x);hit.setAttribute('cy',p.y);hit.setAttribute('r','67');
+      const dot=document.createElementNS(ns,'circle');dot.setAttribute('class','target');dot.setAttribute('cx',p.x);dot.setAttribute('cy',p.y);dot.setAttribute('r','17');
+      const label=document.createElementNS(ns,'text');label.setAttribute('x',p.x+38);label.setAttribute('y',p.y-29);label.textContent=p.ref;
+      const title=document.createElementNS(ns,'title');title.textContent=`${p.ref} · ${p.value}`;
+      g.append(hit,dot,label,title);g.addEventListener('click',()=>choose(p.ref));g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(p.ref)}});
+      markers.append(g);markerEls.set(p.ref,g);
+    }
+    function choose(ref){
+      const p=byRef.get(ref);if(!p)return;selected=ref;
+      $('detail-ref').textContent=p.ref;$('detail-side').textContent='正面 · 顶层';$('detail-value').textContent=p.value;$('detail-desc').textContent=p.description;
+      $('detail-coordinate').textContent=`左 ${p.xMm} mm · 上 ${p.yMm} mm`;$('detail-footprint').textContent=p.footprint;$('detail-model').textContent=p.model;$('detail-supplier').textContent=p.supplierPart;$('detail-supplier').href=p.partUrl;$('detail-source').textContent=p.partSource;
+      $('detail-note').textContent=p.ref==='LCD'?'LCD 位号对应板上的 6 针连接器；显示屏本体不在这块 PCB 上。':p.partSource==='原工程指定'?'该料号来自原理图工程。':'推荐型号与 PCB 的 0402 封装和原理图标称值匹配；采购前核对规格与库存。';
+      for(const [name,el] of markerEls)el.classList.toggle('selected',name===ref);
+      for(const row of list.querySelectorAll('.part'))row.classList.toggle('active',row.dataset.ref===ref);
+      const url=new URL(location.href);url.searchParams.set('part',ref);history.replaceState(null,'',url);
+      viewport.scrollTo({left:Math.max(0,p.x/1575.7821*stage.clientWidth-viewport.clientWidth/2),top:Math.max(0,p.y/1300.1915*stage.clientHeight-viewport.clientHeight/2),behavior:'smooth'});
+    }
+    function filter(){
+      const query=$('search-input').value.trim().toLowerCase();const visible=parts.filter(p=>!query||[p.ref,p.value,p.model,p.footprint,p.description,p.supplierPart].some(x=>x.toLowerCase().includes(query)));
+      list.replaceChildren();for(const p of visible){const row=document.createElement('button');row.type='button';row.className='part'+(p.ref===selected?' active':'');row.dataset.ref=p.ref;
+      const ref=document.createElement('span');ref.className='ref';ref.textContent=p.ref;const value=document.createElement('span');value.className='value';value.textContent=p.value;const arrow=document.createElement('span');arrow.className='arrow';arrow.textContent='↗';row.append(ref,value,arrow);row.addEventListener('click',()=>choose(p.ref));list.append(row)}
+      if(!visible.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='未找到匹配的位号';list.append(empty)}
+      $('list-caption').textContent=`显示 ${visible.length} / ${parts.length} 个位号`;for(const p of parts)markerEls.get(p.ref).classList.toggle('faded',!visible.includes(p));
+    }
+    $('search-input').addEventListener('input',filter);
+    function setZoom(next){zoom=Math.max(1,Math.min(3,next));stage.style.width=(zoom*100)+'%';$('zoom-percent').textContent=Math.round(zoom*100)+'%';choose(selected)}
+    $('zoom-in').addEventListener('click',()=>setZoom(zoom+.5));$('zoom-out').addEventListener('click',()=>setZoom(zoom-.5));
+    filter();choose(selected);
+  })().catch(error=>{document.getElementById('list-caption').textContent=error.message});
+  </script>
+</body>
+</html>
